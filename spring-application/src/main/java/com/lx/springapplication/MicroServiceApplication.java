@@ -1,12 +1,16 @@
 package com.lx.springapplication;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 @SpringBootApplication
+@ComponentScan
 public class MicroServiceApplication {
 
     public static void main(String[] args) {
@@ -18,7 +22,10 @@ public class MicroServiceApplication {
         Map<String,Object> properties=new LinkedHashMap<>();
         properties.put("server.port",0);
         application.setDefaultProperties(properties);
-        application.run(args);
+        application.setWebApplicationType(WebApplicationType.NONE);
+        ConfigurableApplicationContext applicationContext=application.run(args);
+        System.out.println(applicationContext);
+        System.out.println(applicationContext.getBean(MicroServiceApplication.class));
     }
 
 }
