@@ -21,7 +21,6 @@
 
     <modules>
         <module>spring-application</module>
-        <module>spring-cloud-config-apollo</module>
     </modules>
 
     <dependencies>
